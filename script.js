@@ -1,3 +1,4 @@
+document.documentElement.classList.add('js');
 // Reveal on scroll
 const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
