@@ -410,7 +410,6 @@ select option{background:#111;color:#fff}
 .hero__contact>a:first-child{color:var(--mu);font-weight:500}
 .hero__start{display:inline-flex;align-items:center;gap:10px;font-size:18px;line-height:28px;font-weight:600;transition:opacity .3s}
 .hero__start:hover{opacity:.7}
-.hero__feat{display:block}
 .hero__feat img{transition:transform .6s var(--ease)}
 .hero__feat:hover img{transform:scale(1.03)}
 .stats--words{grid-template-columns:1fr 1fr 1fr;padding:0 var(--pad-s,120px)}
@@ -433,3 +432,49 @@ select option{background:#111;color:#fff}
 @media(max-width:1100px){.steps--5{grid-template-columns:1fr 1fr}.stats--words{padding:0 40px}}
 @media(max-width:760px){.steps--5{grid-template-columns:1fr}.stats--words b{font-size:56px;line-height:62px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html.js [data-reveal],html.js .tcard{opacity:1;transform:none}}
+
+/* ---- audit fixes ---- */
+.hero__feat{display:block}
+@media(max-width:1100px){.hero__feat{display:none}}
+.hero__ghost{color:#ccc!important}
+.hero__ghost:hover{color:#fff!important}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:6px}
+.nav__pill a:focus-visible{outline-offset:6px}
+/* nav slides back in when scrolling up, so "Start Your Project" is always reachable */
+.nav.float{position:fixed;top:12px;z-index:60;padding:0 12px 0 28px;background:rgba(10,10,10,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:100px;box-shadow:inset .5px .5px 0 rgba(134,134,134,.5),0 8px 30px rgba(0,0,0,.5);transform:translateY(-160%);transition:transform .45s var(--ease)}
+.nav.float.show{transform:none}
+@media(min-width:1101px){.nav.float .nav__pill{background:none;box-shadow:none}}
+.nav.float .nav__logo img{height:30px}
+.projects__head{width:min(1318px,100% - 48px);margin-bottom:-30px}
+.projects{padding-top:140px}
+.stats--words p{margin-top:16px;color:var(--mu);font-size:15px;line-height:22px;max-width:280px}
+.about{height:auto;padding-bottom:90px}
+.plan__note{margin:-12px 0 24px;font-size:14px;line-height:20px;color:var(--mu)}
+.pricing .price{font-size:26px;line-height:32px;letter-spacing:-.5px}
+.footer__links ul{gap:20px}
+@media(max-width:760px){
+  .hero{height:auto;min-height:0;padding-bottom:330px}
+  .hero__wrap{position:relative;left:auto;transform:none;height:auto;width:calc(100% - 48px);margin:0 auto;padding:140px 0 0}
+  .hero__title{position:static}
+  .hero__title span,.hero__title em{font-size:76px;line-height:78px;letter-spacing:-3.5px}
+  .hero__r{position:static;width:100%;margin-top:36px}
+  .hero__contact{height:auto;flex-wrap:wrap;gap:16px}
+  .hero__ball{left:calc(50% - 300px);top:auto;bottom:-20px;width:600px;height:422px}
+  .hero__down{display:none}
+  .stats--words{grid-template-columns:1fr;padding:0 28px;gap:36px}
+  .stats--words small::after{width:100%}
+  .about{padding-bottom:60px}
+  .projects{padding-top:100px;gap:28px}
+  .projects__head{margin-bottom:0}
+  .project,.project--tall{height:auto;border-radius:28px;display:flex;flex-direction:column;cursor:auto}
+  .project>img:first-of-type{position:relative;height:auto;aspect-ratio:1440/860;transform:none}
+  .project__fade{display:none}
+  .tags{left:14px;top:14px;flex-direction:row;flex-wrap:wrap;gap:8px}
+  .tags span{padding:7px 12px;font-size:12px}
+  .awards{top:14px;right:14px}
+  .awards .visit{padding:8px 14px;font-size:12px}
+  .project__title{position:static;padding:22px 22px 26px}
+  .project__title h3{font-size:34px;line-height:40px}
+  .project__link{cursor:pointer}
+  .nav.float{padding:0 8px 0 18px}
+}

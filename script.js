@@ -170,7 +170,18 @@ if (form) form.addEventListener('submit', e => {
   location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('New project enquiry')}&body=${encodeURIComponent(body)}`;
 });
 
-/* ---- mobile menu ---- */
 const nav = $('.nav');
+/* ---- nav: reappears when scrolling up after the hero ---- */
+let lastY = scrollY;
+function navFloat() {
+  const y = scrollY;
+  if (y > 700) { nav.classList.add('float'); nav.classList.toggle('show', y < lastY - 2 || nav.classList.contains('open')); }
+  else if (y < 40) { nav.classList.remove('float', 'show'); }
+  lastY = y;
+}
+addEventListener('scroll', navFloat, { passive: true });
+$$('.nav__pill a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+/* ---- mobile menu ---- */
 $('.nav__burger')?.addEventListener('click', () => nav.classList.toggle('open'));
 })();

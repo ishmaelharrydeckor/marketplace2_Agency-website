@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TrueCraft – Websites Designed to Win Clients</title>
-<meta name="description" content="TrueCraft builds high-performing websites that build trust and make it easier for customers to act.">
+<meta name="description" content="TrueCraft designs and builds clear, credible, high-performing websites that turn visitors into enquiries.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="TrueCraft – Websites Designed to Win Clients">
+<meta property="og:description" content="We design and build clear, credible, high-performing websites that turn visitors into enquiries.">
+<meta property="og:type" content="website">
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +22,7 @@
 <header class="nav">
   <a href="#top" class="nav__logo"><img src="img/logo.png" alt="TrueCraft"></a>
   <nav class="nav__pill">
-    <a href="#services"><span>Services</span><i></i></a><a href="#projects"><span>Work</span><i></i></a><a href="#why"><span>Why TrueCraft</span><i></i></a><a href="#process"><span>Process</span><i></i></a><a href="#pricing"><span>Engagement</span><i></i></a>
+    <a href="#services"><span>Services</span><i></i></a><a href="#projects"><span>Work</span><i></i></a><a href="#why"><span>Why TrueCraft</span><i></i></a><a href="#process"><span>Process</span><i></i></a><a href="#pricing"><span>Pricing</span><i></i></a>
   </nav>
   <a href="#contact" class="btn btn--light nav__cta"><span>Start Your Project</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   <button class="nav__burger" aria-label="Menu"><span></span><span></span></button>
@@ -28,14 +32,14 @@
 <section class="hero" id="top">
   <video class="hero__video" src="img/hero.mp4" autoplay muted loop playsinline></video>
   <div class="hero__shade"></div>
-  <img class="hero__ball" src="img/ball.svg" alt="">
+  <img class="hero__ball" src="img/ball.webp" alt="" width="948" height="667" fetchpriority="high">
   <div class="hero__glow"></div>
   <div class="hero__wrap">
     <h1 class="hero__title in-load" style="--d:0s"><span>We Build</span><em>Websites</em></h1>
     <div class="hero__r">
-      <p class="hero__p in-load" style="--d:.25s" data-hero-reveal>© Designed to win clients. We build high-performing websites that build trust and make it easier for customers to act.</p>
+      <p class="hero__p in-load" style="--d:.25s" data-hero-reveal>Designed to win clients. We design and build clear, credible websites that make it easy for customers to get in touch.</p>
       <div class="hero__contact in-load" style="--d:.45s">
-        <a href="#services">Explore Services</a>
+        <a href="#services" class="hero__ghost">Explore Services</a>
         <a href="#contact" class="hero__start">Start Your Project <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
@@ -72,17 +76,22 @@
   <span class="chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3.500l2.600 5.300 5.800.8-4.200 4.100 1 5.800-5.200-2.800-5.200 2.800 1-5.800-4.200-4.100 5.800-.8z"/></svg>About Us</span>
   <p class="about__text" data-about>We help businesses build websites that stand out and win clients. We believe in clear structure, credible design and a simple path for customers to get in touch.</p>
   <div class="stats stats--words">
-    <div data-reveal data-scale="1" style="--d:0s"><small>01 / Structure</small><b>Clear</b></div>
-    <div data-reveal data-scale="1" style="--d:.12s"><small>02 / Design</small><b>Credible</b></div>
-    <div data-reveal data-scale="1" style="--d:.24s"><small>03 / Action</small><b>Purposeful</b></div>
+    <div data-reveal data-scale="1" style="--d:0s"><small>01 / Structure</small><b>Clear</b><p>Every page is organised so visitors know where to look and what to do next.</p></div>
+    <div data-reveal data-scale="1" style="--d:.12s"><small>02 / Design</small><b>Credible</b><p>A polished look that matches the quality of the work you do.</p></div>
+    <div data-reveal data-scale="1" style="--d:.24s"><small>03 / Action</small><b>Purposeful</b><p>Simple contact paths, so interested visitors become enquiries.</p></div>
   </div>
 </section>
 
 <!-- WORK -->
 <section class="projects" id="projects">
+  <div class="projects__head head head--center" data-reveal>
+    <span class="chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="12" rx="2"/><path d="M9 21h6M12 17v4"/></svg>Selected Work</span>
+    <h2 class="h2"><em>Websites</em> <span class="grad">We've Built</span></h2>
+    <p class="muted">A look at recent projects. Open any card to visit the live site.</p>
+  </div>
   <article class="project">
     <a class="project__link" href="https://estateguard-azure.vercel.app/" target="_blank" rel="noopener" aria-label="Explore EstateGuard"></a>
-    <img src="img/work-estateguard.jpg" alt="EstateGuard website">
+    <img loading="lazy" decoding="async" src="img/work-estateguard.jpg" alt="EstateGuard website">
     <div class="project__fade"></div>
     <div class="tags"><span>Platform Landing Page</span></div>
     <div class="awards"><span class="visit">Explore ↗</span></div>
@@ -90,7 +99,7 @@
   </article>
   <article class="project">
     <a class="project__link" href="https://checin-6982.vercel.app/" target="_blank" rel="noopener" aria-label="Explore ChecIN"></a>
-    <img src="img/work-checin.jpg" alt="ChecIN website">
+    <img loading="lazy" decoding="async" src="img/work-checin.jpg" alt="ChecIN website">
     <div class="project__fade"></div>
     <div class="tags"><span>Product Website</span></div>
     <div class="awards"><span class="visit">Explore ↗</span></div>
@@ -98,7 +107,7 @@
   </article>
   <article class="project">
     <a class="project__link" href="https://sammy-drab.vercel.app/" target="_blank" rel="noopener" aria-label="Explore Samuel Adanuvo"></a>
-    <img src="img/work-sammy.jpg" alt="Samuel Adanuvo website">
+    <img loading="lazy" decoding="async" src="img/work-sammy.jpg" alt="Samuel Adanuvo website">
     <div class="project__fade"></div>
     <div class="tags"><span>Personal Brand Site</span></div>
     <div class="awards"><span class="visit">Explore ↗</span></div>
@@ -106,7 +115,7 @@
   </article>
   <article class="project">
     <a class="project__link" href="https://solara-three-gamma.vercel.app/" target="_blank" rel="noopener" aria-label="Explore Solara Residence"></a>
-    <img src="img/work-solara.jpg" alt="Solara Residence website">
+    <img loading="lazy" decoding="async" src="img/work-solara.jpg" alt="Solara Residence website">
     <div class="project__fade"></div>
     <div class="tags"><span>Concept Build</span><span>Luxury Real Estate</span></div>
     <div class="awards"><span class="visit">Explore ↗</span></div>
@@ -114,7 +123,7 @@
   </article>
   <article class="project">
     <a class="project__link" href="https://sena-academy-lms-ten.vercel.app/" target="_blank" rel="noopener" aria-label="Explore Sena Academy"></a>
-    <img src="img/work-sena.jpg" alt="Sena Academy website">
+    <img loading="lazy" decoding="async" src="img/work-sena.jpg" alt="Sena Academy website">
     <div class="project__fade"></div>
     <div class="tags"><span>Live Project</span><span>Education Platform</span></div>
     <div class="awards"><span class="visit">Explore ↗</span></div>
@@ -161,14 +170,14 @@
 <!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="head head--center" data-reveal>
-    <span class="chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M14.500 9.500c-.5-.8-1.400-1.200-2.500-1.200-1.400 0-2.500.7-2.500 1.800s1.100 1.500 2.500 1.900 2.500.8 2.500 1.900-1.100 1.800-2.500 1.800c-1.200 0-2.100-.4-2.700-1.200M12 6.500v1.800M12 15.700v1.800"/></svg>Engagement Models</span>
-    <h2 class="h2"><em>Tailored</em> <span class="grad">Engagement Models</span></h2>
-    <p class="muted">Every business is different. Choose the model that fits where you are, and we'll shape the build around it.</p>
+    <span class="chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M14.500 9.500c-.5-.8-1.400-1.200-2.500-1.200-1.400 0-2.500.7-2.500 1.800s1.100 1.500 2.500 1.900 2.500.8 2.500 1.900-1.100 1.800-2.500 1.800c-1.200 0-2.100-.4-2.700-1.200M12 6.500v1.800M12 15.700v1.800"/></svg>Pricing</span>
+    <h2 class="h2"><em>Plans</em> <span class="grad">That Fit Your Business</span></h2>
+    <p class="muted">Every project is different, so every price is quoted up front. Pick the plan that matches where you are and we'll shape the build around it.</p>
   </div>
   <div class="plans">
     <article class="plan">
-      <i class="num">1</i><h3>Essential</h3><p class="muted">A focused website for your core services</p>
-      <div class="price">Core Site</div>
+      <i class="num">1</i><h3>Essential</h3><p class="muted">A focused website for your core services.</p>
+      <div class="price">Small, focused sites</div><p class="plan__note">Your price is quoted before work starts.</p>
       <a href="#contact" class="btn btn--dark">Discuss Your Project</a>
       <div class="rule"><span>What's Included</span></div>
       <ul><li>A focused site around your core services</li><li>Responsive design on every device</li><li>Clear enquiry call-to-action</li><li>Search-ready foundations</li></ul>
@@ -178,7 +187,7 @@
         <img class="plan__dots" src="img/plan-dots.svg" alt="">
         <i class="num">2</i><span class="pop"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f5c542" stroke-width="1.6"><path d="M12 3l2.600 5.600 6.100.8-4.500 4.200 1.100 6.100L12 16.800 6.700 19.700l1.100-6.100L3.300 9.400l6.100-.8z"/></svg>Most Popular</span>
         <h3>Growth</h3><p class="muted">A multi-page site built to generate enquiries</p>
-        <div class="price">Full Site</div>
+        <div class="price">Growing businesses</div><p class="plan__note">Your price is quoted before work starts.</p>
         <a href="#contact" class="btn btn--light">Discuss Your Project</a>
         <div class="rule"><span>What's Included</span></div>
         <ul><li>Multi-page site with service or location pages</li><li>Enquiry forms and call pathways</li><li>Stronger structure and positioning</li><li>Performance and accessibility review</li><li>Launch support</li></ul>
@@ -186,7 +195,7 @@
     </article>
     <article class="plan">
       <i class="num">3</i><h3>Custom</h3><p class="muted">For bigger or more specialised projects</p>
-      <div class="price">Bespoke</div>
+      <div class="price">Bigger projects</div><p class="plan__note">Your price is quoted before work starts.</p>
       <a href="#contact" class="btn btn--dark">Discuss Your Project</a>
       <div class="rule"><span>What's Included</span></div>
       <ul><li>Bespoke page hierarchy and structure</li><li>Specialised customer journeys</li><li>Ongoing founder support</li><li>Built around your goals</li></ul>
@@ -232,7 +241,7 @@
       <small>TrueCraft Studio</small><p>We build high-performing websites that build trust and make it easier for customers to act.</p>
       <small>Website</small><p>truecraft.dev</p>
     </div>
-    <div class="footer__links" data-reveal data-y="50"><small>Links</small><ul><li><a href="#services">Services</a></li><li><a href="#projects">Work</a></li><li><a href="#process">Process</a></li><li><a href="#pricing">Engagement</a></li></ul></div>
+    <div class="footer__links" data-reveal data-y="50"><small>Links</small><ul><li><a href="#services">Services</a></li><li><a href="#projects">Work</a></li><li><a href="#why">Why TrueCraft</a></li><li><a href="#process">Process</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#contact">Contact</a></li></ul></div>
     <div class="footer__links footer__std" data-reveal data-y="50"><small>Build Standard</small><ul><li>Performance</li><li>Search Readiness</li><li>Responsive Design</li><li>Accessibility Review</li></ul></div>
   </div>
   <div class="wrap footer__bottom" data-reveal data-y="50">
