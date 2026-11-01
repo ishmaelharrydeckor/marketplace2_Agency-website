@@ -1,51 +1,175 @@
-document.documentElement.classList.add('js');
-// Reveal on scroll
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-}), { threshold: .15 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+/* Agenciy – interactions measured from the original site */
+(() => {
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const smooth = t => t * t * (3 - 2 * t);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Word-by-word highlight in About text
-const about = document.querySelector('[data-words]');
-if (about) {
-  about.innerHTML = about.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span>`).join(' ');
-  const words = [...about.querySelectorAll('.w')];
-  const update = () => {
-    const r = about.getBoundingClientRect(), vh = innerHeight;
-    const p = Math.min(1, Math.max(0, (vh * .85 - r.top) / (vh * .5 + r.height * .5)));
-    words.forEach((w, i) => w.classList.toggle('on', i < p * words.length + 1));
+/* ---- scroll reveals: play once when the element's top reaches ~76% of the viewport ---- */
+const revealIO = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('in');
+  revealIO.unobserve(e.target);
+  const b = $('[data-count]', e.target);
+  if (b) countUp(b);
+}), { rootMargin: '0px 0px -24% 0px', threshold: 0 });
+$$('[data-reveal]').forEach(el => {
+  el.style.setProperty('--ry', (el.dataset.y ?? 60) + 'px');
+  if (el.dataset.x) el.style.setProperty('--rx', el.dataset.x + 'px');
+  if (el.dataset.scale) el.style.setProperty('--rs', '.8');
+  if (el.dataset.scale) el.style.setProperty('--ry', '30px');
+  revealIO.observe(el);
+});
+
+/* project covers: 1.15 -> 1 zoom, once, a bit earlier than other reveals */
+const coverIO = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); coverIO.unobserve(e.target); }
+}), { rootMargin: '0px 0px -27% 0px' });
+$$('.project').forEach(p => coverIO.observe(p));
+
+/* ---- stat counters (~1.1s, fast start then settle) ---- */
+function countUp(el) {
+  const to = +el.dataset.count;
+  if (reduce) { el.textContent = to + '+'; return; }
+  const t0 = performance.now(), D = 1300;
+  const step = t => {
+    const k = clamp((t - t0) / D);
+    el.textContent = Math.round(to * (k === 1 ? 1 : 1 - Math.pow(2, -10 * k))) + '+';
+    if (k < 1) requestAnimationFrame(step);
   };
-  addEventListener('scroll', update, { passive: true }); update();
+  el.textContent = '0+';
+  requestAnimationFrame(step);
 }
 
-// Count-up stats
-const cio = new IntersectionObserver(es => es.forEach(e => {
-  if (!e.isIntersecting) return;
-  const el = e.target, to = +el.dataset.count, t0 = performance.now();
-  const tick = t => {
-    const k = Math.min(1, (t - t0) / 1600);
-    el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))) + '+';
-    if (k < 1) requestAnimationFrame(tick);
+/* ---- per-character text reveals driven by scroll ---- */
+function splitChars(el) {
+  const text = el.textContent.trim();
+  el.innerHTML = '';
+  const chars = [];
+  text.split(' ').forEach((w, i, a) => {
+    const word = document.createElement('span');
+    word.style.whiteSpace = 'nowrap'; word.style.display = 'inline-block'; word.style.textIndent = '0';
+    [...w].forEach(ch => { const s = document.createElement('span'); s.className = 'c'; s.textContent = ch; word.appendChild(s); chars.push(s); });
+    el.appendChild(word);
+    if (i < a.length - 1) el.appendChild(document.createTextNode(' '));
+  });
+  return chars;
+}
+const heroP = $('[data-hero-reveal]');
+const heroChars = heroP ? splitChars(heroP) : [];
+const aboutP = $('[data-about]');
+const aboutChars = aboutP ? splitChars(aboutP) : [];
+const light = (chars, f) => { const n = Math.round(chars.length * f); chars.forEach((c, i) => c.classList.toggle('on', i < n)); };
+
+/* ---- testimonial cards: scale .5 -> 1 and fade, scrubbed by scroll position ---- */
+const tcards = $$('[data-tcard]').map(el => ({ el, s: .5, o: 0 }));
+const testi = $('.testi');
+const wideTesti = () => innerWidth > 1100;
+function testiTarget(vp) {            // vp: card top relative to a 900px-tall viewport
+  const enter = smooth(clamp((820 - vp) / 310));
+  const exit = 1 - smooth(clamp((-90 - vp) / 310));
+  return Math.min(enter, exit);
+}
+
+/* ---- team carousel: drag, wraps around, centre cards full size ---- */
+const view = $('[data-team]');
+let team = null;
+if (view) {
+  const track = $('.team__track', view);
+  const orig = $$('figure', track);
+  for (let i = 0; i < 2; i++) orig.forEach(f => track.appendChild(f.cloneNode(true)));
+  const figs = $$('figure', track);
+  const gap = 24;
+  const setW = () => orig.length * (orig[0].offsetWidth + gap);
+  team = { off: 0, vel: 0, drag: false, lastX: 0 };
+  team.off = setW() - 24;                       // first card sits 24px from the left, like the original
+  const apply = () => {
+    const W = setW();
+    while (team.off < W / 2) team.off += W;
+    while (team.off >= 1.5 * W) team.off -= W;
+    track.style.transform = `translate3d(${-team.off}px,0,0)`;
+    const vw = view.clientWidth;
+    figs.forEach(f => {
+      const x = f.offsetLeft - team.off;
+      f.classList.toggle('on', x >= -2 && x + f.offsetWidth <= vw + 2);
+    });
   };
-  requestAnimationFrame(tick); cio.unobserve(el);
-}), { threshold: .6 });
-document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+  const frame = () => {
+    if (!team.drag && Math.abs(team.vel) > .05) { team.off += team.vel; team.vel *= .9; apply(); }
+    requestAnimationFrame(frame);
+  };
+  view.addEventListener('pointerdown', e => { team.drag = true; team.lastX = e.clientX; team.vel = 0; view.classList.add('drag'); view.setPointerCapture(e.pointerId); });
+  view.addEventListener('pointermove', e => { if (!team.drag) return; const dx = e.clientX - team.lastX; team.lastX = e.clientX; team.off -= dx; team.vel = -dx * .12; apply(); });
+  const end = () => { team.drag = false; view.classList.remove('drag'); };
+  view.addEventListener('pointerup', end); view.addEventListener('pointercancel', end);
+  view.addEventListener('dragstart', e => e.preventDefault());
+  addEventListener('resize', apply);
+  apply(); frame();
+}
 
-// Team marquee: duplicate for seamless loop
-const row = document.querySelector('.team__row');
-if (row) row.innerHTML += row.innerHTML;
+/* ---- one scroll loop for the scrubbed effects ---- */
+let ticking = false;
+function onScroll() {
+  const vh = innerHeight;
+  if (heroChars.length) light(heroChars, .6 + .4 * clamp(scrollY / 150));
+  if (aboutChars.length) {
+    const top = aboutP.getBoundingClientRect().top;
+    light(aboutChars, .56 + .44 * clamp((.43 * vh - top) / (.333 * vh)));
+  }
+  ticking = false;
+}
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+onScroll();
 
-// FAQ: one open at a time
-document.querySelectorAll('.faq details').forEach(d => d.addEventListener('toggle', () => {
-  if (d.open) document.querySelectorAll('.faq details').forEach(o => o !== d && (o.open = false));
+function loop() {
+  if (testi && wideTesti()) {
+    const r = testi.getBoundingClientRect();
+    if (r.bottom > -400 && r.top < innerHeight + 400) {
+      const k = 900 / innerHeight;
+      tcards.forEach(c => {
+        const top = (r.top + c.el.offsetTop) * k;
+        const tgt = reduce ? 1 : testiTarget(top);
+        c.o += (tgt - c.o) * .16;
+        c.el.style.opacity = c.o.toFixed(3);
+        c.el.style.transform = `scale(${(.5 + .5 * c.o).toFixed(3)})`;
+      });
+    }
+  }
+  requestAnimationFrame(loop);
+}
+loop();
+
+/* ---- FAQ: each question toggles on its own, several can stay open ---- */
+$$('.qa__q').forEach(q => q.addEventListener('click', () => {
+  const qa = q.parentElement;
+  qa.classList.toggle('open');
+  q.setAttribute('aria-expanded', qa.classList.contains('open'));
 }));
 
-// Contact form
-document.getElementById('form')?.addEventListener('submit', e => {
+/* ---- project hover: circular cursor with arrow ---- */
+const cursor = $('.cursor');
+if (cursor && matchMedia('(hover:hover)').matches) {
+  let tx = 0, ty = 0, cx = 0, cy = 0, on = false;
+  addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; if (!on) { cx = tx; cy = ty; } });
+  $$('.project').forEach(p => {
+    p.addEventListener('mouseenter', () => { on = true; cursor.classList.add('on'); });
+    p.addEventListener('mouseleave', () => { on = false; cursor.classList.remove('on'); });
+  });
+  const follow = () => { cx += (tx - cx) * .25; cy += (ty - cy) * .25; cursor.style.transform = `translate(${cx}px,${cy}px)`; requestAnimationFrame(follow); };
+  follow();
+}
+
+/* ---- contact form ---- */
+const form = $('#form');
+if (form) form.addEventListener('submit', e => {
   e.preventDefault();
-  const b = e.target.querySelector('button'); b.textContent = 'Message Sent ✓'; e.target.reset();
+  const b = $('button span', form) || $('button', form);
+  b.textContent = 'Message Sent ✓'; form.reset();
   setTimeout(() => b.textContent = 'Send Message', 3000);
 });
 
-// Mobile menu: scroll to contact
-document.querySelector('.nav__burger')?.addEventListener('click', () => document.getElementById('services').scrollIntoView());
+/* ---- mobile menu ---- */
+const nav = $('.nav');
+$('.nav__burger')?.addEventListener('click', () => nav.classList.toggle('open'));
+})();

@@ -33,7 +33,7 @@ def phead(chip, line1, line2, p=''):
 
 
 # ---------------- projects ----------------
-cards = re.findall(r'<article class="project reveal">.*?</article>', home, re.S)
+cards = re.findall(r'<article class="project[^"]*">.*?</article>', home, re.S)
 projects = phead('Featured', 'Our', 'Projects') + '<section class="projects projects--page">' + '\n'.join(cards) + '</section>'
 page('projects.html', 'Projects – Agenciy', projects + FAQ + CONTACT, 'projects.html')
 
@@ -45,7 +45,7 @@ posts = [
     ('blog-4', 'Minimal is not Empty', 'Crafting impact with less...', 'May 2025'),
     ('blog-5', 'The Art of Visual', 'How to design narratives...', 'June 2024'),
 ]
-cards_html = ''.join(f'''<a href="#" class="post reveal"><div class="post__img"><img src="img/{i}.png" alt="{t}"></div>
+cards_html = ''.join(f'''<a href="#" class="post" data-reveal><div class="post__img"><img src="img/{i}.png" alt="{t}"></div>
   <div class="post__meta"><h3>{t}</h3><p>{d}</p></div><div class="post__date"><small>Date</small><span>{dt}</span></div></a>''' for i, t, d, dt in posts)
 page('blogs.html', 'Blog – Agenciy', phead('Blog', 'Our Featured', 'Blog Insights') + f'<section class="posts">{cards_html}</section>', 'blogs.html')
 
@@ -77,7 +77,7 @@ jobs = [
     ('Pixelnest Studio', 'UI/UX Designer', '2016 - 2020', 'Collaborated with senior designers to create wireframes, UI mockups, and prototypes.'),
     ('Aura & Co.', 'Visual Designer', '2010-2015', 'In Aura Designed brand identity kits including, social media creatives, and visual templates.'),
 ]
-jobs_html = ''.join(f'<article class="job reveal"><div><h3>{c}</h3><small>{r}</small></div><span>{y}</span><p>{d}</p></article>' for c, r, y, d in jobs)
+jobs_html = ''.join(f'<article class="job" data-reveal><div><h3>{c}</h3><small>{r}</small></div><span>{y}</span><p>{d}</p></article>' for c, r, y, d in jobs)
 about = f'''<section class="phero"><span class="chip">Who We Are</span><h1 class="agency-word"><img src="img/logo-big.png" alt="Agenciy"></h1></section>
 <section class="about about--page">
   <span class="chip">About Us</span>

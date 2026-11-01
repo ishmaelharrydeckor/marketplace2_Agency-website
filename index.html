@@ -9,17 +9,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- NAV -->
+<!-- NAV (absolute: scrolls away with the page, like the original) -->
 <header class="nav">
   <a href="index.html" class="nav__logo"><img src="img/logo.png" alt="agenciy"></a>
   <nav class="nav__pill">
-    <a href="index.html#services">Services</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="blogs.html">Blog</a><a href="contact.html">Contact</a>
+    <a href="index.html#services"><span>Services</span><i></i></a><a href="about.html"><span>About</span><i></i></a><a href="projects.html"><span>Projects</span><i></i></a><a href="blogs.html"><span>Blog</span><i></i></a><a href="contact.html"><span>Contact</span><i></i></a>
   </nav>
-  <a href="contact.html" class="btn btn--light nav__cta">Let's Chat! <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <a href="contact.html" class="btn btn--light nav__cta"><span>Let's Chat!</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   <button class="nav__burger" aria-label="Menu"><span></span><span></span></button>
 </header>
 
@@ -27,91 +28,105 @@
 <section class="hero" id="top">
   <video class="hero__video" src="img/hero.mp4" autoplay muted loop playsinline></video>
   <div class="hero__shade"></div>
-  <h1 class="hero__title"><span>Create,</span><em>Impactful</em></h1>
-  <div class="hero__side">
-    <p>© We Build Brands,websites and digital experience with intension, clarity and care</p>
-    <div class="hero__contact">
-      <a href="#contact">Contact Us</a>
-      <div class="socials">
-        <a href="#" aria-label="Dribbble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M5 8c5 1 9 0 13-3M3.5 13c6-1 11 0 14 6M9 3c3 5 5 10 5 18"/></svg></a>
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r=".6" fill="currentColor"/></svg></a>
-        <a href="#" aria-label="Dribbble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8 5c4 3 6 8 8 14M4 12c5 0 10-1 15 2M8 19c1-5 4-9 9-11"/></svg></a>
-        <a href="#" aria-label="Behance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="5"/><path d="M8 10h3a1.5 1.5 0 010 3H8zm0 3h3.3a1.5 1.5 0 010 3H8zM14 10h3.5M14 13.5c0-1.5 1-2 2-2s2 .7 2 2h-4c0 1.5 1 2 2 2"/></svg></a>
+  <img class="hero__ball" src="img/ball.svg" alt="">
+  <div class="hero__glow"></div>
+  <div class="hero__wrap">
+    <h1 class="hero__title in-load" style="--d:0s"><span>Create,</span><em>Impactful</em></h1>
+    <div class="hero__r">
+      <p class="hero__p in-load" style="--d:.25s" data-hero-reveal>© We Build Brands,websites and digital experience with intension, clarity and care</p>
+      <div class="hero__contact in-load" style="--d:.45s">
+        <a href="contact.html">Contact Us</a>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M13.500 20v-6.500h2l.4-2.500h-2.400V9.700c0-.7.300-1.200 1.300-1.200h1.200V6.400A12 12 0 0014.300 6c-1.800 0-3 1.100-3 3v2h-2v2.500h2V20"/></svg></a>
+          <a href="#" aria-label="Instagram"><i></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="14" rx="4.500"/><circle cx="12" cy="12" r="3.200"/><circle cx="16.200" cy="7.800" r=".7" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Dribbble"><i></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M8.500 4.500c3 2.500 5 6 6 12M4.200 11c4 .3 8-.5 11.500 1.700M7 18.200c1-3.500 4-6 9-6.500"/></svg></a>
+          <a href="#" aria-label="Behance"><i></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h4.500a2 2 0 010 4H4zm0 4h5a2.200 2.200 0 010 4.500H4zM14 8h4M13.500 13.500h5c0-1.800-1-2.800-2.500-2.800s-2.500 1-2.500 2.800 1 2.800 2.500 2.800c1 0 1.800-.5 2.200-1.200"/></svg></a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="hero__we">
-    <small>We do</small>
-    <p>Brand Identity <i>/</i> UI/UX Design<br>Development <i>/</i> Marketing</p>
-  </div>
-  <div class="hero__featured">
-    <div class="hero__featured-top"><small>Featured</small><small>(02)</small></div>
-    <img src="img/project-news.png" alt="Featured project">
+    <div class="hero__we in-load" style="--d:.1s">
+      <b>We do</b>
+      <p><span>Brand Identity</span><u></u><span>UI/UX Design</span></p>
+      <p><span>Development</span><u></u><span>Marketing</span></p>
+      <div class="marquee"><div class="marquee__track"><img src="img/logo-venice.svg" alt=""><img src="img/logo-cairo.svg" alt=""><img src="img/logo-italic.svg" alt=""><img src="img/logo-theo.svg" alt=""><img src="img/logo-hues.svg" alt=""><img src="img/logo-venice.svg" alt=""><img src="img/logo-cairo.svg" alt=""><img src="img/logo-italic.svg" alt=""><img src="img/logo-theo.svg" alt=""><img src="img/logo-hues.svg" alt=""></div></div>
+    </div>
+    <div class="hero__feat in-load" style="--d:.3s"><div><span>Featured</span><span>(02)</span></div><img src="img/featured.png" alt="Featured project"></div>
+    <a href="#services" class="hero__down" aria-label="Scroll down"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg></a>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section class="section" id="services">
-  <div class="head head--split">
+<section class="services-sec" id="services">
+  <div class="wrap head head--split" data-reveal>
     <div>
-      <span class="chip chip--abs"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.5 6 6.5.5-5 4.3 1.6 6.4L12 17l-5.600 3.200L8 13.800 3 9.500 9.500 9z"/></svg>Services</span>
+      <span class="chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20l5-1 9-9-4-4-9 9zM13 7l4 4M15 3l2 2M19 7l2 2"/></svg>Our Services</span>
       <h2 class="h2"><em>What</em> <span class="grad">We Do</span></h2>
     </div>
     <p class="muted head__p">We craft digital experiences from idea to launch — blending strategy, design, and engineering to build products that performs.</p>
   </div>
-  <div class="services reveal">
-    <article><img src="img/svc-1.png" alt=""><span>/01</span><h3>Brand Identity</h3><p>Create visual identities that align with your voice and make lasting impressions.</p></article>
-    <article><img src="img/svc-2.png" alt=""><span>/02</span><h3>UI/UX Design</h3><p>Focus on user-first interfaces that are both beautiful, intiative, and purposes.</p></article>
-    <article><img src="img/svc-3.png" alt=""><span>/03</span><h3>Web Development</h3><p>Develop high-performance websites and apps built to grow with you.</p></article>
-    <article><img src="img/svc-4.png" alt=""><span>/04</span><h3>Digital Marketing</h3><p>Craft data-driven campaigns that attract, engage, and convert — across channels.</p></article>
+  <div class="wrap services">
+    <article><i class="hv"></i><img class="hv-img" src="img/svc-hover.svg" alt=""><img class="ico" src="img/svc-1.png" alt=""><span>/01</span><h3>Brand Identity</h3><p>Create visual identities that align with your voice and make lasting impressions.</p></article>
+    <article><i class="hv"></i><img class="hv-img" src="img/svc-hover.svg" alt=""><img class="ico" src="img/svc-2.png" alt=""><span>/02</span><h3>UI/UX Design</h3><p>Focus on user-first interfaces that are both beautiful, intiative, and purposes.</p></article>
+    <article><i class="hv"></i><img class="hv-img" src="img/svc-hover.svg" alt=""><img class="ico" src="img/svc-3.png" alt=""><span>/03</span><h3>Web Development</h3><p>Develop high-performance websites and apps built to grow with you.</p></article>
+    <article><i class="hv"></i><img class="hv-img" src="img/svc-hover.svg" alt=""><img class="ico" src="img/svc-4.png" alt=""><span>/04</span><h3>Digital Marketing</h3><p>Craft data-driven campaigns that attract, engage, and convert — across channels.</p></article>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section class="about" id="about">
-  <span class="chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.600 5.600 6.100.8-4.500 4.200 1.100 6.100L12 16.800 6.700 19.700l1.100-6.100L3.300 9.400l6.100-.8z"/></svg>About Us</span>
-  <p class="about__text" data-words>We help ambitious brands and startups build digital products that stand out and scale. We believe in working smart, building fast, and designing with purpose.</p>
+  <img class="about__wave" src="img/dotwave.svg" alt="">
+  <img class="about__ghost" src="img/ghost.png" alt="">
+  <span class="chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3.500l2.600 5.300 5.800.8-4.200 4.100 1 5.800-5.200-2.800-5.200 2.800 1-5.800-4.200-4.100 5.800-.8z"/></svg>About Us</span>
+  <p class="about__text" data-about>We help ambitious brands and startups build digital products that stand out and scale. We believe in working smart, building fast, and designing with purpose.</p>
   <div class="stats">
-    <div><small>Projects Launced</small><b data-count="140">140+</b></div>
-    <div><small>Years Of Experience</small><b data-count="10">10+</b></div>
-    <div><small>Happy Clients</small><b data-count="50">50+</b></div>
+    <div data-reveal data-scale="1" style="--d:0s"><small>Projects Launced</small><b data-count="140">140+</b></div>
+    <div data-reveal data-scale="1" style="--d:.12s"><small>Years Of Experience</small><b data-count="10">10+</b></div>
+    <div data-reveal data-scale="1" style="--d:.24s"><small>Happy Clients</small><b data-count="50">50+</b></div>
   </div>
 </section>
 
 <!-- PROJECTS -->
 <section class="projects" id="projects">
-  <article class="project reveal"><a class="project__link" href="project-the-news.html" aria-label="Open project"></a>
+  <article class="project">
+    <a class="project__link" href="project-the-news.html" aria-label="Open The News"></a>
     <img src="img/project-news.png" alt="Landing page design for news platform">
+    <div class="project__fade"></div>
     <div class="tags"><span>Web &amp; App Design</span><span>Responsive Frontends</span></div>
-    <div class="awards"><div><b>W.</b><p>Honor Mentions<small>June 2024</small></p></div><div><b>Bē</b><p>UI/UX Featured<small>August 2024</small></p></div></div>
+    <div class="awards"><div><img src="img/award-w.svg" alt="W."><p>Honor Mentions<small>June 2024</small></p></div><div><img src="img/award-be.svg" alt="Bē"><p>UI/UX Featured<small>August 2024</small></p></div></div>
     <div class="project__title"><p>Landing page design for news platform</p><h3>The <span class="grad">News</span></h3></div>
   </article>
-  <article class="project reveal"><a class="project__link" href="project-virtual-reality-encounter.html" aria-label="Open project"></a>
+  <article class="project project--tall">
+    <a class="project__link" href="project-virtual-reality-encounter.html" aria-label="Open Virtual Reality Encounter"></a>
     <img src="img/project-vr.png" alt="Futuristic scene with a sleek VR headset">
+    <div class="project__fade"></div>
     <div class="tags"><span>Brand Identity</span><span>Web Development</span></div>
-    <div class="awards"><div><b>W.</b><p>Honor Mentions<small>May 2024</small></p></div><div><b>Bē</b><p>UI/UX Featured<small>July 2024</small></p></div></div>
+    <div class="awards"><div><img src="img/award-w.svg" alt="W."><p>Honor Mentions<small>May 2024</small></p></div><div><img src="img/award-be.svg" alt="Bē"><p>UI/UX Featured<small>July 2024</small></p></div></div>
     <div class="project__title"><p>Futuristic scene with a sleek VR headset</p><h3>Virtual <span class="grad">Reality Encounter</span></h3></div>
   </article>
-  <article class="project reveal"><a class="project__link" href="project-theo-agency-re-branding.html" aria-label="Open project"></a>
+  <article class="project project--tall">
+    <a class="project__link" href="project-theo-agency-re-branding.html" aria-label="Open Theo Agency Re-branding"></a>
     <img src="img/project-theo.png" alt="New brand identity theo UK Theo Agency">
+    <div class="project__fade"></div>
     <div class="tags"><span>Brand Identity</span><span>SEO</span></div>
-    <div class="awards"><div><b>W.</b><p>Honor Mentions<small>March 2024</small></p></div><div><b>Bē</b><p>UI/UX Featured<small>August 2024</small></p></div></div>
-    <div class="project__title"><p>New brand identity theo UK Theo Agency</p><h3>Theo <span class="grad">Agency Re-branding</span></h3></div>
+    <div class="awards"><div><img src="img/award-w.svg" alt="W."><p>Honor Mentions<small>March 2024</small></p></div><div><img src="img/award-be.svg" alt="Bē"><p>UI/UX Featured<small>August 2024</small></p></div></div>
+    <div class="project__title"><p>New brand identity theo UK Theo Agency</p><h3>Theo <span class="grad">Agency<br>Re-branding</span></h3></div>
   </article>
-  <a href="projects.html" class="btn btn--light projects__all">View All Projects <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <a href="projects.html" class="btn btn--light projects__all">View All Projects <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 </section>
+<div class="cursor" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></div>
 
 <!-- PROCESS -->
-<section class="process section">
-  <div class="head head--split head--bottom">
+<section class="process">
+  <img class="process__wave" src="img/dotwave.svg" alt="">
+  <div class="wrap head head--split head--bottom" data-reveal>
     <div>
-      <span class="chip chip--abs"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h10"/></svg>Our Process</span>
+      <span class="chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9c3-3 6 3 9 0s6 3 9 0M3 15c3-3 6 3 9 0s6 3 9 0"/></svg>Our Process</span>
       <h2 class="h2"><em>The Journey</em> <em class="soft">to a</em><br><span class="grad">Successful Product</span></h2>
     </div>
     <p class="muted head__p">We keep things lean and collaborative — so ideas go from concept to launch without the chaos.</p>
   </div>
-  <div class="steps">
-    <article><span>/01</span><h3>Discover</h3><p>Create visual identities that align with your voice and make lasting impressions.</p><i class="dome"><b><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.5"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.500 10.900c.6.5 1 1.200 1 2.100h5c0-.9.4-1.600 1-2.100A6 6 0 0012 3z"/></svg></b></i></article>
+  <div class="wrap steps">
+    <article><span>/01</span><h3>Discover</h3><p>Create visual identities that align with your voice and make lasting impressions.</p><i class="dome"><b><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.5"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.500 10.900c.6.500 1 1.200 1 2.100h5c0-.9.4-1.600 1-2.100A6 6 0 0012 3z"/></svg></b></i></article>
     <article><span>/02</span><h3>Design</h3><p>Shape powerful experiences with purpose-driven creativity and thoughtful execution.</p><i class="dome"><b><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.5"><path d="M4 20l4-1 11-11-3-3L5 16zM14 7l3 3"/></svg></b></i></article>
     <article><span>/03</span><h3>Develop</h3><p>Build scalable solutions that bring your vision to life with precision and performance.</p><i class="dome"><b><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.5"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 5l-4 14"/></svg></b></i></article>
     <article><span>/04</span><h3>Launch &amp; Grow</h3><p>Introduce your brand with impact through strategic rollouts that captivate and convert.</p><i class="dome"><b><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.5"><path d="M5 19c0-3 1-4 3-5m3 3c3-1 5-3 7-11-8 2-10 4-11 7zM9 15l-1 4 4-1"/></svg></b></i></article>
@@ -120,21 +135,24 @@
 
 <!-- AWARDS -->
 <section class="awards-sec">
-  <span class="chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M12 9l1 2 2 .3-1.500 1.400.4 2-1.900-1-1.900 1 .4-2L9 11.300l2-.3z"/></svg>Our Award</span>
-  <div class="award-list">
-    <div><b>Awwwards</b><span>SOTY 2025 - 1st Winner</span><em>A.I Car Landing page</em></div>
-    <div><b>Css Awards</b><span>Top 5 Best of eCommerce Websites 2024</span><em>Theo Agency, Re-branding</em></div>
-    <div><b>Behance</b><span>Winner - US Behance Portfolio Review 2024</span><em>Virtual Reality, Encounter</em></div>
-    <div><b>Awwwards</b><span>Honor SOTD November, 2024</span><em>The News</em></div>
+  <span class="chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M12 9l1 2 2 .3-1.500 1.400.4 2-1.900-1-1.900 1 .4-2L9 11.300l2-.3z"/></svg>Our Award</span>
+  <div class="wrap award-list">
+    <div data-reveal data-y="140"><small>Awwwards</small><b>SOTY 2025 - 1st Winner</b><em>A.I Car Landing page</em></div>
+    <div data-reveal data-y="140"><small>Css Awards</small><b>Top 5 Best of eCommerce Websites 2024</b><em>Theo Agency, Re-branding</em></div>
+    <div data-reveal data-y="140"><small>Behance</small><b>Winner - US Behance Portfolio Review 2024</b><em>Virtual Reality, Encounter</em></div>
+    <div data-reveal data-y="140"><small>Awwwards</small><b>Honor SOTD November, 2024</b><em>The News</em></div>
   </div>
 </section>
 
 <!-- TEAM -->
 <section class="team">
-  <span class="chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="3"/><path d="M3 20c0-3.500 2.700-6 6-6s6 2.500 6 6M16 6a3 3 0 010 6M18 14c2 .8 3 3 3 6"/></svg>Team Members</span>
-  <h2 class="h2 center">Meet Our <em>Team Members</em></h2>
-  <div class="team__track">
-    <div class="team__row">
+  <img class="team__bg" src="img/wave-1.png" alt="">
+  <div class="head head--center" data-reveal>
+    <span class="chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="9" r="3"/><path d="M3 20c0-3.500 2.700-6 6-6s6 2.500 6 6M16 6a3 3 0 010 6M18 14c2 .8 3 3 3 6"/></svg>Team Members</span>
+    <h2 class="h2">Meet Our <em>Team Members</em></h2>
+  </div>
+  <div class="team__view" data-team>
+    <div class="team__track">
       <figure><img src="img/team-1.png" alt="Avery James"><span class="tag">Leadership</span><figcaption><b>Avery James</b><small>Founder &amp; Product Lead</small></figcaption></figure>
       <figure><img src="img/team-2.png" alt="Ryan Adams"><span class="tag">Marketing Team</span><figcaption><b>Ryan Adams</b><small>Growth &amp; Marketing Lead</small></figcaption></figure>
       <figure><img src="img/team-3.png" alt="Ethan Chen"><span class="tag">Development Team</span><figcaption><b>Ethan Chen</b><small>Lead Frontend Developer</small></figcaption></figure>
@@ -145,26 +163,27 @@
 </section>
 
 <!-- PRICING -->
-<section class="section pricing">
-  <div class="head head--center">
-    <span class="chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M16 7.500c-.8-1-2.200-1.500-4-1.500-2.200 0-4 1-4 2.800s1.800 2.400 4 3 4 1.200 4 3.200S14.200 18 12 18c-2 0-3.500-.6-4.400-1.800"/></svg>Pricing Plan</span>
-    <h2 class="h2"><em>Plans</em> That Scale <span class="grad">With You</span></h2>
-    <p class="muted">Whether you're launching a startup or growing a product, we’ve got a plan that fits your stage — no fluff, just what you need.</p>
+<section class="pricing">
+  <div class="head head--center" data-reveal>
+    <span class="chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M14.500 9.500c-.5-.8-1.400-1.200-2.500-1.200-1.400 0-2.500.7-2.500 1.800s1.100 1.500 2.500 1.900 2.500.8 2.500 1.900-1.100 1.800-2.500 1.800c-1.200 0-2.100-.4-2.700-1.200M12 6.500v1.800M12 15.700v1.800"/></svg>Pricing Plan</span>
+    <h2 class="h2"><em>Plans</em> <span class="grad">That Scale With You</span></h2>
+    <p class="muted">Whether you're launching a startup or growing a product, we’ve got a plan  that fits your stage — no fluff, just what you need.</p>
   </div>
   <div class="plans">
     <article class="plan">
       <i class="num">1</i><h3>Starter Plan</h3><p class="muted">For early-stage ideas or small projects</p>
       <div class="price">$2,500+ <small>/ Project</small></div>
-      <a href="#contact" class="btn btn--dark">Get Started</a>
+      <a href="contact.html" class="btn btn--dark">Get Started</a>
       <div class="rule"><span>Plan Detail</span></div>
       <ul><li>Discovery session &amp; roadmap</li><li>Basic frontend development</li><li>2 rounds of revisions</li><li>1-week turnaround</li></ul>
     </article>
     <article class="plan plan--pop">
       <div class="plan__in">
-        <i class="num">2</i><span class="pop"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5c542" stroke-width="1.6"><path d="M12 3l2.600 5.600 6.100.8-4.500 4.200 1.100 6.100L12 16.800 6.700 19.700l1.100-6.100L3.300 9.400l6.100-.8z"/></svg>Popular</span>
+        <img class="plan__dots" src="img/plan-dots.svg" alt="">
+        <i class="num">2</i><span class="pop"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f5c542" stroke-width="1.6"><path d="M12 3l2.600 5.600 6.100.8-4.500 4.200 1.100 6.100L12 16.800 6.700 19.700l1.100-6.100L3.300 9.400l6.100-.8z"/></svg>Popular</span>
         <h3>Growth Plan</h3><p class="muted">For growing brands or MVP launches</p>
         <div class="price">$6,500+ <small>/ Project</small></div>
-        <a href="#contact" class="btn btn--light">Get Started</a>
+        <a href="contact.html" class="btn btn--light">Get Started</a>
         <div class="rule"><span>Plan Detail</span></div>
         <ul><li>End-to-end design &amp; dev</li><li>Responsive frontend &amp; CMS</li><li>Light brand styling</li><li>SEO-ready &amp; launch support</li><li>2-3 weeks delivery</li></ul>
       </div>
@@ -172,69 +191,71 @@
     <article class="plan">
       <i class="num">3</i><h3>Custom Plan</h3><p class="muted">For complex products or long-term builds</p>
       <div class="price">Custom <small>/ Project</small></div>
-      <a href="#contact" class="btn btn--dark">Get Started</a>
+      <a href="contact.html" class="btn btn--dark">Get Started</a>
       <div class="rule"><span>Plan Detail</span></div>
       <ul><li>Full product design + development</li><li>Feature-rich platforms or apps</li><li>Advanced backend integrations</li><li>Dedicated team &amp; PM</li></ul>
     </article>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- TESTIMONIALS (cards scale + fade with scroll) -->
 <section class="testi">
   <img class="testi__wave" src="img/wave-2.png" alt="">
-  <div class="head head--center">
-    <span class="chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v11H9l-5 4z"/></svg>Testimonials</span>
+  <div class="testi__head head head--center" data-reveal>
+    <span class="chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h16v11H9l-5 4z"/></svg>Testimonials</span>
     <h2 class="h2"><em>Hear from the Clients</em><br><span class="grad">We've Partnered With</span></h2>
   </div>
-  <div class="testi__grid">
-    <blockquote><p>"Agenciy felt like an extension of our team. Their design instincts and speed were exactly what we needed to launch on time — and with style."</p><cite><b>Sarah Coleman</b>CEO at NovaTech</cite></blockquote>
-    <blockquote><p>"From the first call to the final handoff, everything was seamless. The UI/UX work was some of the best we’ve seen."</p><cite><b>Daniel Reyes</b>Product Manager at Clarity CRM</cite></blockquote>
-    <blockquote><p>"We came to Agenciy with a rough idea, and they turned it into a beautiful, functional MVP in weeks. Highly recommended."</p><cite><b>Rachel Lin</b>Co-Founder at Driftly</cite></blockquote>
-    <blockquote><p>"Their process is clear, communication is fast, and the results speak for themselves. We saw a 40% boost in engagement post-launch."</p><cite><b>Jason Ford</b>Marketing Lead at BrightChain</cite></blockquote>
-  </div>
+  <div class="tcard tcard--1" data-tcard><blockquote><p>"Agenciy felt like an extension of our team. Their design instincts and speed were exactly what we needed to launch on time — and with style."</p></blockquote><cite><img src="img/av-1.png" alt=""><span><b>Sarah Coleman</b>CEO at NovaTech</span></cite></div>
+  <div class="tcard tcard--2" data-tcard><blockquote><p>"From the first call to the final handoff, everything was seamless. The UI/UX work was some of the best we’ve seen."</p></blockquote><cite><img src="img/av-2.png" alt=""><span><b>Daniel Reyes</b>Product Manager at Clarity CRM</span></cite></div>
+  <div class="tcard tcard--3" data-tcard><blockquote><p>"We came to Agenciy with a rough idea, and they turned it into a beautiful, functional MVP in weeks. Highly recommended."</p></blockquote><cite><img src="img/av-3.png" alt=""><span><b>Rachel Lin</b>Co-Founder at Driftly</span></cite></div>
+  <div class="tcard tcard--4" data-tcard><blockquote><p>"Their process is clear, communication is fast, and the results speak for themselves. We saw a 40% boost in engagement post-launch."</p></blockquote><cite><img src="img/av-4.png" alt=""><span><b>Jason Ford</b>Marketing Lead at BrightChain</span></cite></div>
 </section>
 
 <!-- FAQ -->
 <section class="faq">
-  <div class="head head--center">
-    <span class="chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9.500 9.500a2.500 2.500 0 114 2c-.9.6-1.500 1-1.500 2M12 17v.1"/></svg>FAQs</span>
+  <div class="head head--center" data-reveal>
+    <span class="chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8.500"/><path d="M9.500 9.500a2.500 2.500 0 114 2c-.9.600-1.500 1-1.500 2M12 16.500v.1"/></svg>FAQs</span>
     <h2 class="h2">FA<span class="grad">Qs</span></h2>
   </div>
-  <div class="faq__list">
-    <details open><summary>How long does a typical project take?<i></i></summary><p>Project timelines vary based on scope, but most branding or website projects take between 2–4 weeks. Complex apps or platforms may take longer — we’ll always give you a clear timeline upfront.</p></details>
-    <details><summary>Do you offer ongoing support after launch?<i></i></summary><p>Yes. We offer flexible support and maintenance plans after launch, covering updates, fixes and continued improvements.</p></details>
-    <details><summary>What if I only need design or development, not both?<i></i></summary><p>No problem — you can hire us for design only, development only, or the full end-to-end package.</p></details>
-    <details><summary>Can you work with my internal team?<i></i></summary><p>Absolutely. We regularly collaborate with in-house designers, developers and marketers.</p></details>
-    <details><summary>Do you work with startups or only established companies?<i></i></summary><p>Both. We work with early-stage startups and established companies alike.</p></details>
+  <div class="faq__list" data-reveal data-y="50">
+    <div class="qa open"><button class="qa__q" type="button" aria-expanded="true">How long does a typical project take?<i></i></button><div class="qa__a"><div><p>Project timelines vary based on scope, but most branding or website projects take between 2–4 weeks. Complex apps or platforms may take longer — we’ll always give you a clear timeline upfront.</p></div></div></div>
+    <div class="qa"><button class="qa__q" type="button" aria-expanded="false">Do you offer ongoing support after launch?<i></i></button><div class="qa__a"><div><p>Yes, we offer ongoing support after launch to ensure smooth operations and address any issues. We provide maintenance, updates, and troubleshooting as needed.</p></div></div></div>
+    <div class="qa"><button class="qa__q" type="button" aria-expanded="false">What if I only need design or development, not both?<i></i></button><div class="qa__a"><div><p>We can tailor our services to meet your specific needs, offering either design or development separately. You’ll get focused expertise on whichever service you require.</p></div></div></div>
+    <div class="qa"><button class="qa__q" type="button" aria-expanded="false">Can you work with my internal team?<i></i></button><div class="qa__a"><div><p>Absolutely, we can collaborate with your internal team to align on goals and ensure seamless integration. We're flexible in working alongside existing workflows.</p></div></div></div>
+    <div class="qa"><button class="qa__q" type="button" aria-expanded="false">Do you work with startups or only established companies?<i></i></button><div class="qa__a"><div><p>We work with both startups and established companies, providing tailored solutions for each. Whether you're just starting out or scaling up, we’ve got you covered.</p></div></div></div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="contact__card contact__card--l">
-    <h2 class="h2">Let’s Talk<br><em>Your Next Big Idea</em></h2>
+  <div class="contact__card contact__card--l" data-reveal data-x="-50" data-y="0">
+    <img class="contact__dots" src="img/dots.png" alt="">
+    <div class="contact__glow"></div>
+    <h2 class="h2" data-reveal-self><span>Let’s Talk</span><em>Your Next Big Idea</em></h2>
   </div>
-  <form class="contact__card contact__card--r" id="form">
+  <form class="contact__card contact__card--r" id="form" data-reveal data-x="-50" data-y="0" style="--d:.1s">
     <h3 class="muted">Fill This Form Below</h3>
     <label>Your Name<input type="text" placeholder="Enter your full name" required></label>
     <label>Your Email<input type="email" placeholder="Enter the e-mail" required></label>
     <label>More About The Project<textarea rows="3"></textarea></label>
-    <button class="btn btn--light" type="submit">Send Message</button>
+    <button class="btn btn--light" type="submit"><span>Send Message</span></button>
   </form>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer__cols">
-    <div class="footer__info">
+  <div class="wrap footer__cols">
+    <div class="footer__info" data-reveal data-y="50">
       <small>Location</small><p>1234 Market Street, Suite 500<br>San Francisco, CA 94103, US</p>
       <small>Contact</small><p>info@agenciy.agency<br>+1 (415) 555-0132</p>
     </div>
-    <div class="footer__links"><small>Links</small><ul><li><a href="about.html">About</a></li><li><a href="projects.html">Project</a></li><li><a href="blogs.html">Blogs</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    <div class="footer__links"><small>Socials</small><ul><li><a href="#">Instagram</a></li><li><a href="#">X(Twitter)</a></li><li><a href="#">Behance</a></li><li><a href="#">Dribbble</a></li></ul></div>
+    <div class="footer__links" data-reveal data-y="50"><small>Links</small><ul><li><a href="about.html">About</a></li><li><a href="projects.html">Project</a></li><li><a href="blogs.html">Blogs</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer__links" data-reveal data-y="50"><small>Socials</small><ul><li><a href="#">Instagram</a></li><li><a href="#">X(Twitter)</a></li><li><a href="#">Behance</a></li><li><a href="#">Dribbble</a></li></ul></div>
   </div>
-  <img class="footer__big" src="img/logo-big.png" alt="agenciy">
-  <div class="footer__bar"><span>© 2025 <b>Agenciy.</b> All Right Reserved</span><a href="#top">Back to Top</a></div>
+  <div class="wrap footer__bottom" data-reveal data-y="50">
+    <img class="footer__big" src="img/logo-big.png" alt="agenciy">
+    <div class="footer__bar"><span>© 2025 <b>Agenciy.</b> All Right Reserved</span><a href="#top">Back to Top</a></div>
+  </div>
 </footer>
 
 <script src="script.js"></script>
