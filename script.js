@@ -160,13 +160,14 @@ if (cursor && matchMedia('(hover:hover)').matches) {
   follow();
 }
 
-/* ---- contact form ---- */
+/* ---- contact form: opens the visitor's email app (set the address below) ---- */
+const CONTACT_EMAIL = 'hello@truecraft.dev';
 const form = $('#form');
 if (form) form.addEventListener('submit', e => {
   e.preventDefault();
-  const b = $('button span', form) || $('button', form);
-  b.textContent = 'Message Sent ✓'; form.reset();
-  setTimeout(() => b.textContent = 'Send Message', 3000);
+  const d = new FormData(form);
+  const body = `Name: ${d.get('name')}\nEmail: ${d.get('email')}\n\n${d.get('message') || ''}`;
+  location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('New project enquiry')}&body=${encodeURIComponent(body)}`;
 });
 
 /* ---- mobile menu ---- */
