@@ -140,6 +140,13 @@ function loop() {
 }
 loop();
 
+/* ---- hero video: keep it still when the visitor prefers reduced motion; recover if autoplay was blocked ---- */
+const heroVideo = $('.hero__video');
+if (heroVideo) {
+  if (reduce) heroVideo.pause();
+  else { const go = () => heroVideo.play().catch(() => {}); go(); document.addEventListener('visibilitychange', () => { if (!document.hidden) go(); }); }
+}
+
 /* ---- FAQ: each question toggles on its own, several can stay open ---- */
 $$('.qa__q').forEach(q => q.addEventListener('click', () => {
   const qa = q.parentElement;

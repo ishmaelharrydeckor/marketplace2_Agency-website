@@ -6,8 +6,8 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{overflow-x:clip}
-body{background:var(--bg);color:#fff;font:400 16px/24px var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
+html{overflow-x:hidden;overflow-x:clip}
+body{background:var(--bg);color:#fff;font:400 16px/24px var(--sans);overflow-x:hidden;overflow-x:clip;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
@@ -81,7 +81,7 @@ em{font-family:var(--serif);font-style:italic;font-weight:400}
 .hero__feat div{display:flex;justify-content:space-between;margin-bottom:28px}
 .hero__feat span:first-child{color:#eee}
 .hero__feat img{width:271px;height:174px;object-fit:cover;border-radius:16px}
-.hero__down{position:absolute;left:50%;top:786px;margin-left:-24px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:rgba(0,0,0,.35);backdrop-filter:blur(8px)}
+.hero__down{position:absolute;left:50%;top:786px;margin-left:-24px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:rgba(0,0,0,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .hero__down svg{animation:bob 2.2s linear infinite alternate}
 @keyframes bob{from{transform:translateY(-3px)}to{transform:translateY(5px)}}
 
@@ -189,7 +189,7 @@ html:not(.js) .project>img:first-of-type,.project.in>img:first-of-type{transform
 .team figure.on{transform:none;opacity:1}
 .team figure::before{content:"";position:absolute;left:36px;right:36px;top:36px;bottom:36px;border-radius:24px;border:1px solid rgba(255,255,255,.12);background:rgba(18,18,18,.55);box-shadow:0 36px 52px rgba(0,0,0,.55)}
 .team figure img{position:absolute;left:50%;bottom:0;transform:translateX(-50%);height:526px;width:auto;max-width:none;pointer-events:none}
-.team .tag{position:absolute;left:60px;top:60px;z-index:2;padding:9px 16px;border-radius:100px;background:rgba(70,70,70,.7);backdrop-filter:blur(8px);font-size:14px;line-height:20px}
+.team .tag{position:absolute;left:60px;top:60px;z-index:2;padding:9px 16px;border-radius:100px;background:rgba(70,70,70,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:14px;line-height:20px}
 .team figcaption{position:absolute;left:36px;right:36px;bottom:36px;padding:100px 24px 28px;border-radius:0 0 24px 24px;background:linear-gradient(transparent,rgba(0,0,0,.85));z-index:2}
 .team figcaption b{display:block;font-size:32px;line-height:36px;font-weight:500;letter-spacing:-.32px}
 .team figcaption small{font-size:14px;color:#ccc}
@@ -226,7 +226,7 @@ html.js .tcard{opacity:0;transform:scale(.5)}
 .tcard--2{left:61.7%;top:200px}
 .tcard--3{left:max(24px,4.76%);top:481px}
 .tcard--4{left:49.9%;top:637px}
-.tcard blockquote{padding:40px 32px;border-radius:16px;background:rgba(255,255,255,.07);backdrop-filter:blur(10px)}
+.tcard blockquote{padding:40px 32px;border-radius:16px;background:rgba(255,255,255,.07);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .tcard p{font-size:16px;line-height:24px;color:#eee}
 .tcard cite{display:flex;align-items:center;gap:14px;margin-top:26px;font-style:normal;font-size:14px;line-height:20px;color:var(--mu)}
 .tcard cite img{width:48px;height:48px;border-radius:50%;object-fit:cover}
@@ -360,6 +360,8 @@ select option{background:#111;color:#fff}
 }
 @media(max-width:1100px){
   .nav__pill,.hero__we,.hero__feat{display:none}
+  .nav__burger{display:flex}
+  .nav__cta{margin-left:auto;margin-right:12px}
   .nav.open .nav__pill{display:flex;position:absolute;left:auto;right:0;top:64px;transform:none;flex-direction:column;align-items:flex-start;gap:18px;height:auto;padding:24px 32px;border-radius:28px;z-index:40}
   .services,.steps{grid-template-columns:1fr 1fr;height:auto}
   .services article{height:480px}
@@ -416,7 +418,7 @@ select option{background:#111;color:#fff}
 .stats--words small{--lw:100%}
 .stats--words small::after{width:calc(100% - 40px)}
 .stats--words b{font-size:76px;line-height:84px;letter-spacing:-3px;margin-top:40px}
-.awards .visit{display:inline-block;padding:12px 20px;border-radius:100px;background:rgba(40,40,40,.85);backdrop-filter:blur(8px);font-size:14px;line-height:20px;font-weight:500;box-shadow:inset 1.5px 1.5px 2px rgba(255,255,255,.12);transition:background .3s,color .3s}
+.awards .visit{display:inline-block;padding:12px 20px;border-radius:100px;background:rgba(40,40,40,.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:14px;line-height:20px;font-weight:500;box-shadow:inset 1.5px 1.5px 2px rgba(255,255,255,.12);transition:background .3s,color .3s}
 .project:hover .visit{background:#fff;color:#111}
 .steps--5{grid-template-columns:repeat(5,1fr);gap:20px}
 .steps--5 article{padding:34px 26px 0}
@@ -441,7 +443,7 @@ select option{background:#111;color:#fff}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:6px}
 .nav__pill a:focus-visible{outline-offset:6px}
 /* nav slides back in when scrolling up, so "Start Your Project" is always reachable */
-.nav.float{position:fixed;top:12px;z-index:60;padding:0 12px 0 28px;background:rgba(10,10,10,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:100px;box-shadow:inset .5px .5px 0 rgba(134,134,134,.5),0 8px 30px rgba(0,0,0,.5);transform:translateY(-160%);transition:transform .45s var(--ease)}
+.nav.float{position:fixed;top:12px;z-index:60;padding:0 12px 0 28px;background:rgba(10,10,10,.78);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:100px;box-shadow:inset .5px .5px 0 rgba(134,134,134,.5),0 8px 30px rgba(0,0,0,.5);transform:translateY(-160%);transition:transform .45s var(--ease)}
 .nav.float.show{transform:none}
 @media(min-width:1101px){.nav.float .nav__pill{background:none;box-shadow:none}}
 .nav.float .nav__logo img{height:30px}
@@ -521,3 +523,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .pp__nav b{font-size:24px;line-height:30px;font-weight:500}
 .pp+.contact{margin-top:110px}
 @media(max-width:860px){.pp{padding-top:130px}.pp__sec{grid-template-columns:1fr;gap:20px;padding-top:48px}.pp__nav{grid-template-columns:1fr}.pp__nav a:last-child{text-align:left}.pp__head p{font-size:17px;line-height:27px}}
+
+/* contact: what to expect */
+.contact__next{margin:6px 0 22px;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.05);color:var(--mu);font-size:14px;line-height:21px}
+.contact__next b{display:block;color:#fff;font-weight:600;margin-bottom:4px;font-size:14px}
+/* Safari without overflow-x:clip: keep the page from scrolling sideways */
+@supports not (overflow-x:clip){html,body{overflow-x:hidden}}
+
+.contact__card--r .btn{flex:none;height:52px;min-height:52px}
+.contact__card--l{padding-bottom:30px}
